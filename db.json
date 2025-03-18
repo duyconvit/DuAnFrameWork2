@@ -1,0 +1,32 @@
+{
+  "students": [
+    {
+      "name": "iphone 11111",
+      "price": "350",
+      "description": "dfdsfdsfdsf",
+      "image": "https://cf.shopee.co.id/file/bb35b0ea23db2a5473ce9025260f3726",
+      "id": 3
+    },
+    {
+      "name": "Iphone 13 Pro",
+      "price": "35",
+      "description": "tientoan ",
+      "image": "https://cdn.nguyenkimmall.com/images/detailed/756/dien-thoai-iphone-13-pro-128gb-bac-1.jpg",
+      "id": 4
+    },
+    {
+      "name": "Lê Tiến Toàn",
+      "price": "350.000",
+      "description": "tyty",
+      "image": null,
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "email": "letientoan449@gmail.com",
+      "password": "$2a$10$L0l77bBXW0n4RtuZqjlnw.5lUja/cmIus/.VCPwlq16AHjuUUueAe",
+      "id": 1
+    }
+  ]
+}
