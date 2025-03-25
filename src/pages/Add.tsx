@@ -43,7 +43,7 @@ const Add = () => {
           <Menu.Item key="1" icon={<ShoppingCartOutlined />}>
             <Link to="/admin/products">Sản phẩm</Link>
           </Menu.Item>
-          <Menu.Item key="2" icon={<UserOutlined />}>
+          <Menu.Item key="2" icon={<UserOutlined/>}>
             <Link to="/customers">Khách hàng</Link>
           </Menu.Item>
         </Menu>
