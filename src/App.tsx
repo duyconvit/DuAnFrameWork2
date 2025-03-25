@@ -5,6 +5,7 @@ import Add from "./pages/Add";
 import Edit from "./pages/Edit";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import CustomerList from "./pages/KhachHangList";
 
 function App() {
   const routes = useRoutes([
@@ -13,6 +14,8 @@ function App() {
     {path:'/students/:id', element:<Edit/>},
     {path:'/login', element:<Login/>},
     {path:'/register', element:<Register/>},
+    {path:'/customers',element:<CustomerList/>},
+    
   ])
   return routes
 }

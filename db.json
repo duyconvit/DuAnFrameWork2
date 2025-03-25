@@ -28,5 +28,25 @@
       "password": "$2a$10$L0l77bBXW0n4RtuZqjlnw.5lUja/cmIus/.VCPwlq16AHjuUUueAe",
       "id": 1
     }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "Nguyễn Văn A",
+      "email": "a@gmail.com",
+      "phone": "0123456789"
+    },
+    {
+      "id": 2,
+      "name": "Trần Thị B",
+      "email": "b@gmail.com",
+      "phone": "0987654321"
+    },
+    {
+      "name": "Lê Tiến Toàn",
+      "email": "tuananh@gmail.com",
+      "phone": "0967725410",
+      "id": 3
+    }
   ]
 }

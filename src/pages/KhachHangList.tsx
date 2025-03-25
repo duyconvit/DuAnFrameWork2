@@ -40,14 +40,16 @@ const CustomerList = () => {
     { title: "Số điện thoại", dataIndex: "phone", key: "phone" },
   ];
 
-return (
+  return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider theme="dark" collapsible>
         <div className="logo" style={{ color: "white", textAlign: "center", padding: "20px" }}>Quản lý</div>
         <Menu theme="dark" mode="inline">
-          <Menu.Item key="1" icon={<UserOutlined />}>
-            <Link to="/customers">Khách hàng</Link>
+          <Menu.Item key="2" icon={<UserOutlined />}>
+          <Link to="/customers">Khách hàng</Link>
+
           </Menu.Item>
+
         </Menu>
       </Sider>
       <Layout>

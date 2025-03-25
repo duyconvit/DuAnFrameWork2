@@ -1,7 +1,7 @@
 import { ProductForm } from '@/interface/type';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Form, Input, Button, Upload, message, Layout, Card, Avatar, Space } from 'antd';
+import { Form, Input, Button, Upload, message, Layout, Card} from 'antd';
 import { UploadOutlined, ShoppingCartOutlined, UserOutlined, BarChartOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -44,10 +44,7 @@ const Add = () => {
             <Link to="/admin/products">Sản phẩm</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<UserOutlined />}>
-            <Link to="/admin/customers">Khách hàng</Link>
-          </Menu.Item>
-          <Menu.Item key="3" icon={<BarChartOutlined />}>
-            <Link to="/admin/reports">Thống kê</Link>
+            <Link to="/customers">Khách hàng</Link>
           </Menu.Item>
         </Menu>
       </Sider>
