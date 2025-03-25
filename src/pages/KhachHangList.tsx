@@ -22,7 +22,23 @@ const CustomerList = () => {
       console.error(error);
     }
   };
+  const handleAddCustomer = async (values: any) => {
+    try {
+      await axios.post("http://localhost:4000/customers", values);
+      message.success("Thêm khách hàng thành công!");
+      setModalVisible(false);
+      fetchCustomers();
+    } catch (error) {
+      message.error("Lỗi khi thêm khách hàng!");
+    }
+  };
 
+  const columns = [
+    { title: "ID", dataIndex: "id", key: "id" },
+    { title: "Tên khách hàng", dataIndex: "name", key: "name" },
+    { title: "Email", dataIndex: "email", key: "email" },
+    { title: "Số điện thoại", dataIndex: "phone", key: "phone" },
+  ];
 
 return (
     <Layout style={{ minHeight: "100vh" }}>
