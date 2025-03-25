@@ -5,6 +5,24 @@ import { UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 const { Header, Sider, Content } = Layout;
+const CustomerList = () => {
+  const [customers, setCustomers] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+    fetchCustomers();
+  }, []);
+
+  const fetchCustomers = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:4000/customers");
+      setCustomers(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
 return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -43,5 +61,6 @@ return (
       </Modal>
     </Layout>
   );
+}
 
 export default CustomerList;
