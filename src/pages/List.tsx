@@ -70,7 +70,7 @@ const List = () => {
             {
               key: "2",
               icon: <UserOutlined />,
-              label: <Link to="/admin/customers" style={{ textDecoration: "none" }}>Đơn Hàng</Link>
+              label: <Link to="/orders" style={{ textDecoration: "none" }}>Đơn Hàng</Link>
             },
             {
               key: "3",
@@ -81,7 +81,12 @@ const List = () => {
         />
       </Sider>
       <Layout>
-        <Header style={{ background: "#fff", padding: 0, textAlign: "center", fontSize: "18px" }}>Danh sách sản phẩm</Header>
+        <Header style={{ background: "#fff", padding: "16px", textAlign: "center", fontSize: "18px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span>Danh sách sản phẩm</span>
+          <Link to="/students/add">
+            <Button type="primary">+ Thêm sản phẩm</Button>
+          </Link>
+        </Header>
         <Content style={{ margin: "16px" }}>
           <Table columns={columns} dataSource={students} rowKey="id" bordered pagination={{ pageSize: 5 }} />
         </Content>

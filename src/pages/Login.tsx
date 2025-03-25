@@ -8,7 +8,7 @@ const Login = () => {
   const navigate = useNavigate()
   const onSubmit = async (user: UseLogin) => {
     try {
-      const { data } = await axios.post(`http://localhost:4000/login`, user)
+      const { data }  = await axios.post(`http://localhost:4000/login`, user)
       alert('Dang nhap thanh cong ')
       navigate(`/students`)
     } catch (error) {

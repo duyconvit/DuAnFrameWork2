@@ -6,6 +6,13 @@
       "description": "tyty",
       "image": null,
       "id": 5
+    },
+    {
+      "name": "KIA Morning AT",
+      "price": "999666",
+      "description": "fdđ",
+      "image": "https://picsum.photos/200",
+      "id": 6
     }
   ],
   "users": [
@@ -13,6 +20,32 @@
       "email": "letientoan449@gmail.com",
       "password": "$2a$10$L0l77bBXW0n4RtuZqjlnw.5lUja/cmIus/.VCPwlq16AHjuUUueAe",
       "id": 1
+    },
+    {
+      "email": "admin99@gmail.com",
+      "password": "$2a$10$5ELH4QTqVMneHVmBybels.WuYRCG9UT6Hr2XarUZI1XjFDE5igFC.",
+      "id": 2
     }
-  ]
+  ],
+  "orders": [
+  {
+    "id": 1,
+    "customerName": "Nguyễn Văn A",
+    "products": [
+      { "name": "iPhone 14", "price": 20000000 },
+      { "name": "Samsung Galaxy S22", "price": 18000000 }
+    ],
+    "total": 38000000,
+    "status": "Đang xử lý"
+  },
+  {
+    "id": 2,
+    "customerName": "Trần Thị B",
+    "products": [
+      { "name": "Xiaomi Mi 12", "price": 15000000 }
+    ],
+    "total": 15000000,
+    "status": "Đã giao"
+  }
+]
 }
