@@ -1,0 +1,46 @@
+{
+  "students": [
+    {
+      "name": "Lê Tiến Toàn",
+      "price": "350.000",
+      "description": "tyty",
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-16-pro-max.png",
+      "id": 5
+    },
+    {
+      "name": "Lê Tiến Toàn",
+      "price": "350.000",
+      "description": "tyty",
+      "image": "https://cf.shopee.co.id/file/bb35b0ea23db2a5473ce9025260f3726",
+      "id": 5
+    },
+    {
+      "name": "Lê Tiến Toàn",
+      "price": "350.000",
+      "description": "tyty",
+      "image": "https://cf.shopee.co.id/file/bb35b0ea23db2a5473ce9025260f3726",
+      "id": 5
+    },
+    {
+      "name": "Lê Tiến Toàn",
+      "price": "350.000",
+      "description": "tyty",
+      "image": "https://cf.shopee.co.id/file/bb35b0ea23db2a5473ce9025260f3726",
+      "id": 5
+    },
+    {
+      "name": "Lê Tiến Toàn",
+      "price": "350.000",
+      "description": "tyty",
+      "image": "https://cf.shopee.co.id/file/bb35b0ea23db2a5473ce9025260f3726",
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "email": "letientoan449@gmail.com",
+      "password": "$2a$10$L0l77bBXW0n4RtuZqjlnw.5lUja/cmIus/.VCPwlq16AHjuUUueAe",
+      "id": 1
+    }
+  ]
+}
