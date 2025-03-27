@@ -2,7 +2,7 @@ import { ProductForm } from '@/interface/type';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Form, Input, Button, message, Layout, Card } from 'antd';
-import { ShoppingCartOutlined, UserOutlined, BarChartOutlined } from '@ant-design/icons';
+import { ShoppingCartOutlined, UserOutlined, OrderedListOutlined,LoginOutlined,EditOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
@@ -33,13 +33,19 @@ const Add = () => {
         <div className="logo" style={{ color: "white", textAlign: "center", padding: "20px" }}>Admin Panel</div>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1" icon={<ShoppingCartOutlined />}>
-            <Link to="/admin/products">Sản phẩm</Link>
+            <Link to="/students">Sản phẩm</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<UserOutlined />}>
-            <Link to="/admin/customers">Khách hàng</Link>
+            <Link to="/students">Đơn hàng</Link>
           </Menu.Item>
-          <Menu.Item key="3" icon={<BarChartOutlined />}>
-            <Link to="/admin/reports">Thống kê</Link>
+          <Menu.Item key="3" icon={<OrderedListOutlined />}>
+            <Link to="/admin/reports">Khách hàng</Link>
+          </Menu.Item>
+          <Menu.Item key="4" icon={<LoginOutlined />}>
+            <Link to="/login">Login</Link>
+          </Menu.Item>
+          <Menu.Item key="5" icon={<EditOutlined />}>
+            <Link to="/register">Register</Link>
           </Menu.Item>
         </Menu>
       </Sider>

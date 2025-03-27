@@ -2,7 +2,7 @@ import { Layout, Menu, Table, Button, Space, message } from "antd";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ShoppingCartOutlined, UserOutlined, BarChartOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, UserOutlined, OrderedListOutlined, EditOutlined, LoginOutlined } from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
 
@@ -35,17 +35,7 @@ const OrderManagement = () => {
     }
   };
 
-  // Xóa đơn hàng
-  const deleteOrder = async (id) => {
-    try {
-      await axios.delete(`http://localhost:4000/orders/${id}`);
-      setOrders(orders.filter(order => order.id !== id));
-      message.success("Xóa đơn hàng thành công!");
-    } catch (error) {
-      console.error(error);
-      message.error("Lỗi khi xóa đơn hàng!");
-    }
-  };
+
 
   // Cấu hình bảng hiển thị đơn hàng
   const columns = [
@@ -84,7 +74,6 @@ const OrderManagement = () => {
         <Space>
           <Button onClick={() => updateStatus(record.id, "Đã giao")} type="primary">Đã giao</Button>
           <Button onClick={() => updateStatus(record.id, "Đã hủy")} danger>Hủy</Button>
-          <Button onClick={() => deleteOrder(record.id)} danger>Xóa</Button>
         </Space>
       ),
     },
@@ -102,8 +91,14 @@ const OrderManagement = () => {
           <Menu.Item key="2" icon={<UserOutlined />}>
             <Link to="/orders">Đơn Hàng</Link>
           </Menu.Item>
-          <Menu.Item key="3" icon={<BarChartOutlined />}>
-            <Link to="/admin/reports">Thống kê</Link>
+          <Menu.Item key="3" icon={<OrderedListOutlined />}>
+            <Link to="/admin/reports">Khách Hàng</Link>
+          </Menu.Item>
+          <Menu.Item key="4" icon={<LoginOutlined />}>
+            <Link to="/login">Login</Link>
+          </Menu.Item>
+          <Menu.Item key="5" icon={<EditOutlined />}>
+            <Link to="/register">Register</Link>
           </Menu.Item>
         </Menu>
       </Sider>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { IProduct } from "@/interface/type";
-import { UserOutlined, ShoppingCartOutlined, BarChartOutlined } from "@ant-design/icons";
+import { UserOutlined, ShoppingCartOutlined, OrderedListOutlined, LoginOutlined, EditOutlined } from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
 
@@ -56,7 +56,7 @@ const List = () => {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div className="logo" style={{ color: "white", textAlign: "center", padding: "20px" }}>Điện Thoại</div>
+        <div className="logo" style={{ color: "white", textAlign: "center", padding: "20px" }}>Admin</div>
         <Menu
           theme="dark"
           mode="inline"
@@ -74,19 +74,36 @@ const List = () => {
             },
             {
               key: "3",
-              icon: <BarChartOutlined />,
+              icon: <OrderedListOutlined />,
               label: <Link to="/admin/reports" style={{ textDecoration: "none" }}>Khách Hàng</Link>
+            },
+            {
+              key: "4",
+              icon: <LoginOutlined />,
+              label: <Link to="/login" style={{ textDecoration: "none" }}>Login</Link>
+            },
+            {
+              key: "5",
+              icon: <EditOutlined />,
+              label: <Link to="/register" style={{ textDecoration: "none" }}>Register</Link>
             }
           ]}
         />
       </Sider>
       <Layout>
-        <Header style={{ background: "#fff", padding: "16px", textAlign: "center", fontSize: "18px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span>Danh sách sản phẩm</span>
+        <Header style={{
+          background: "#fff",
+          padding: "0 20px",
+          fontSize: "18px",
+          display: "flex",
+          alignItems: "center"
+        }}>
           <Link to="/students/add">
             <Button type="primary">+ Thêm sản phẩm</Button>
           </Link>
+          <span style={{ flex: 1, textAlign: "center" }}>Danh sách sản phẩm</span>
         </Header>
+
         <Content style={{ margin: "16px" }}>
           <Table columns={columns} dataSource={students} rowKey="id" bordered pagination={{ pageSize: 5 }} />
         </Content>

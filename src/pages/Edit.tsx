@@ -31,7 +31,7 @@ try {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md space-y-4">
-  <h2 className="text-2xl font-bold text-center text-gray-700">Cap nhat Sản Phẩm</h2>
+  <h2 className="text-2xl font-bold text-center text-gray-700">Cập Nhật Sản Phẩm</h2>
 
   <input 
     {...register("name",{required:true})}
@@ -43,20 +43,20 @@ try {
   <input 
     {...register("image",)}
     type='text'
-    placeholder='anh san pham'
+    placeholder='Anh san pham'
     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
   />
   <input 
     {...register("price",{required:true , pattern:/^\d+(\.\d+)?$/})}
-    type='text'
+    type='number'
     placeholder='Gia san pham'
     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
   />
-  {(errors.price)&& <span>gia khong am </span>}
+  {(errors.price)&& <span>Giá không được để trống</span>}
   <input 
     {...register("description")}
     type='text'
-    placeholder='Ten san pham'
+    placeholder='Mô tả sản phẩm'
     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
   />
   <button 
