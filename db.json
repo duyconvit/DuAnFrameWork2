@@ -113,5 +113,41 @@
       "total": 15000000,
       "status": "Đã giao"
     }
+  ],
+  "customers": [
+    {
+      "name": "Lê Tiến Toàn",
+      "phone": "0967725410",
+      "address": "11\nSơn trung quốc oai",
+      "cart": [
+        {
+          "name": "Iphone 16 Promax",
+          "price": "350000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-samsung-galaxy-s25-ultra_3__3.png",
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "total": 350000,
+      "id": 1
+    },
+    {
+      "name": "Lê Tiến Toàn",
+      "phone": "0967725410",
+      "address": "11\nSơn trung quốc oai",
+      "cart": [
+        {
+          "name": "Iphone 16 Promax",
+          "price": "350000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-samsung-galaxy-s25-ultra_3__3.png",
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "total": 350000,
+      "id": 2
+    }
   ]
 }

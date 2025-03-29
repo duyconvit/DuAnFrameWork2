@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Layout, Card, List, Input, Button, message, Form } from "antd";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Footer from "./Footer";
 
 const { Header, Content } = Layout;
@@ -26,16 +27,27 @@ const Checkout = () => {
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  const handleCheckout = (values: any) => {
-    message.success("Thanh toán thành công! Đơn hàng đang được xử lý.");
-    localStorage.removeItem("cart");
-    setCart([]);
-    navigate("/");
+  const handleCheckout = async (values: any) => {
+    try {
+      const orderData = {
+        name: values.name,
+        phone: values.phone,
+        address: values.address,
+        cart,
+        total,
+      };
+      await axios.post("http://localhost:4000/customers", orderData);
+      message.success("Thanh toán thành công! Đơn hàng đang được xử lý.");
+      localStorage.removeItem("cart");
+      setCart([]);
+      navigate("/");
+    } catch (error) {
+      message.error("Lỗi khi xử lý thanh toán!");
+    }
   };
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      {/* Header */}
       <Header style={{ background: "#fff", padding: "0 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ fontSize: "24px", fontWeight: "bold", color: "#1890ff", cursor: "pointer" }} onClick={() => navigate("/")}>📱 PhoneStore</div>
       </Header>
@@ -78,7 +90,6 @@ const Checkout = () => {
         </Card>
       </Content>
 
-      {/* Footer */}
       <Footer />
     </Layout>
   );
