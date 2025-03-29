@@ -29,44 +29,27 @@ try {
     }
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md space-y-4">
-  <h2 className="text-2xl font-bold text-center text-gray-700">Cap nhat Sản Phẩm</h2>
-
-  <input 
-    {...register("name",{required:true})}
-    type='text'
-    placeholder='Ten san pham'
-    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-  {(errors.name)&& <span>Khong duoc de trong </span>}
-  <input 
-    {...register("image",)}
-    type='text'
-    placeholder='anh san pham'
-    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-  <input 
-    {...register("price",{required:true , pattern:/^\d+(\.\d+)?$/})}
-    type='text'
-    placeholder='Gia san pham'
-    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-  {(errors.price)&& <span>gia khong am </span>}
-  <input 
-    {...register("description")}
-    type='text'
-    placeholder='Ten san pham'
-    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-  <button 
-    type="submit" 
-    className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
-  >
-   Cập nhật Sản Phẩm
-  </button>
-</form>
-    </div>
+    <Layout style={{ minHeight: '100vh' }}>
+      <Sider theme="dark" collapsible>
+        <div className="logo" style={{ color: 'white', textAlign: 'center', padding: '20px' }}>Admin Panel</div>
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu.Item key="1" icon={<ShoppingCartOutlined />}>
+            <Link to="/students">Sản phẩm</Link>
+          </Menu.Item>
+          <Menu.Item key="2" icon={<UserOutlined />}>
+            <Link to="/students">Đơn hàng</Link>
+          </Menu.Item>
+          <Menu.Item key="3" icon={<OrderedListOutlined />}>
+            <Link to="/admin/reports">Khách hàng</Link>
+          </Menu.Item>
+          <Menu.Item key="4" icon={<LoginOutlined />}>
+            <Link to="/login">Login</Link>
+          </Menu.Item>
+          <Menu.Item key="5" icon={<EditOutlined />}>
+            <Link to="/register">Register</Link>
+          </Menu.Item>
+        </Menu>
+      </Sider>
   )
 }
 
