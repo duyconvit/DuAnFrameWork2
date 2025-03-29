@@ -1,4 +1,5 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useEffect } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import { Card, Input, Button, Typography, Form, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
@@ -6,22 +7,34 @@ import axios from 'axios';
 
 const { Title, Text } = Typography;
 
-// Định nghĩa interface cho dữ liệu form đăng nhập
 interface LoginFormInputs {
   email: string;
   password: string;
 }
 
 const Login = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<LoginFormInputs>();
+  const { control, handleSubmit, formState: { errors } } = useForm<LoginFormInputs>();
   const navigate = useNavigate();
 
-  // Xác định kiểu dữ liệu cho hàm onSubmit
-  const onSubmit: SubmitHandler<LoginFormInputs> = async (user) => {
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      message.info(`Chào mừng trở lại, ${JSON.parse(user).name}!`);
+      navigate('/'); // Nếu đã đăng nhập, tự động chuyển hướng
+    }
+  }, [navigate]);
+
+  const onSubmit = async (user: LoginFormInputs) => {
     try {
-      await axios.post('http://localhost:4000/login', user);
-      message.success('Đăng nhập thành công');
-      navigate('/students');
+      const { data } = await axios.post('http://localhost:4000/login', user);
+
+      if (data.accessToken) {
+        localStorage.setItem('user', JSON.stringify({ name: data.name, email: data.email, token: data.accessToken }));
+        message.success(`Đăng nhập thành công! Chào mừng, ${data.name}!`);
+        navigate('/');
+      } else {
+        throw new Error('Lỗi xác thực');
+      }
     } catch (error) {
       console.error(error);
       message.error('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.');
@@ -33,27 +46,24 @@ const Login = () => {
       <Card style={{ width: 400 }}>
         <Title level={2} style={{ textAlign: 'center' }}>Đăng nhập</Title>
         <Form onFinish={handleSubmit(onSubmit)} layout="vertical">
-          <Form.Item
-            label="Email"
-            validateStatus={errors.email ? 'error' : ''}
-            help={errors.email ? 'Vui lòng nhập đúng định dạng email' : ''}
-          >
-            <Input
-              {...register('email', { required: true, pattern: /^\S+@\S+\.\S+$/ })}
-              prefix={<UserOutlined />}
-              placeholder="Email"
+          
+          {/* Email */}
+          <Form.Item label="Email" validateStatus={errors.email ? 'error' : ''} help={errors.email?.message}>
+            <Controller
+              name="email"
+              control={control}
+              rules={{ required: 'Vui lòng nhập email', pattern: { value: /^\S+@\S+\.\S+$/, message: 'Email không hợp lệ' } }}
+              render={({ field }) => <Input {...field} prefix={<UserOutlined />} placeholder="Email" />}
             />
           </Form.Item>
 
-          <Form.Item
-            label="Mật khẩu"
-            validateStatus={errors.password ? 'error' : ''}
-            help={errors.password ? 'Mật khẩu phải có ít nhất 6 ký tự' : ''}
-          >
-            <Input.Password
-              {...register('password', { required: true, minLength: 6 })}
-              prefix={<LockOutlined />}
-              placeholder="Mật khẩu"
+          {/* Mật khẩu */}
+          <Form.Item label="Mật khẩu" validateStatus={errors.password ? 'error' : ''} help={errors.password?.message}>
+            <Controller
+              name="password"
+              control={control}
+              rules={{ required: 'Vui lòng nhập mật khẩu', minLength: { value: 6, message: 'Mật khẩu ít nhất 6 ký tự' } }}
+              render={({ field }) => <Input.Password {...field} prefix={<LockOutlined />} placeholder="Mật khẩu" />}
             />
           </Form.Item>
 

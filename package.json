@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite --open /students\" \"json-server --watch db.json --port 4000 -m ./node_modules/json-server-auth\"",
+    "dev": "concurrently \"vite --open /login\" \"json-server --watch db.json --port 4000 -m ./node_modules/json-server-auth\"",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",

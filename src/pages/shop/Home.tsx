@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Input, Button, Card, Row, Col, message, Carousel } from 'antd';
+import { Layout, Input, Button, Card, Row, Col, message, Carousel, Dropdown, Menu } from 'antd';
 import { SearchOutlined, UserOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -20,6 +20,7 @@ interface Product {
 const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [cart, setCart] = useState<Product[]>([]);
+  const [userName, setUserName] = useState<string | null>(null);
   const navigate = useNavigate();
 
   // Lấy dữ liệu sản phẩm từ API
@@ -34,6 +35,21 @@ const Home = () => {
       }
     })();
   }, []);
+
+  // Kiểm tra xem người dùng đã đăng nhập hay chưa
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      setUserName(JSON.parse(user).name); // Giả sử API trả về { name: "Nguyễn Văn A" }
+    }
+  }, []);
+
+  // Đăng xuất
+  const handleLogout = () => {
+    localStorage.removeItem('user'); // Xóa dữ liệu đăng nhập
+    setUserName(null);
+    message.success('Bạn đã đăng xuất');
+  };
 
   // Thêm sản phẩm vào giỏ hàng
   const addToCart = (product: Product) => {
@@ -68,7 +84,21 @@ const Home = () => {
         <Input placeholder="Tìm kiếm sản phẩm..." prefix={<SearchOutlined />} style={{ width: '40%' }} />
         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
           <ShoppingCart cart={cart} setCart={setCart} />
-          <Button type="primary" icon={<UserOutlined />}><Link to="/login">Đăng nhập</Link></Button>
+          
+          {/* Kiểm tra xem đã đăng nhập chưa */}
+          {userName ? (
+            <Dropdown
+              overlay={
+                <Menu>
+                  <Menu.Item key="1" onClick={handleLogout}>Đăng xuất</Menu.Item>
+                </Menu>
+              }
+            >
+              <Button type="primary" icon={<UserOutlined />}>{userName}</Button>
+            </Dropdown>
+          ) : (
+            <Button type="primary" icon={<UserOutlined />}></Button>
+          )}
         </div>
       </Header>
 

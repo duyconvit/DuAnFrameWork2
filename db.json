@@ -67,6 +67,21 @@
       "email": "daing@gmail.com",
       "password": "$2a$10$V8VN0JMsVgBMjugQoeUuKeLZ8n9cdjz2bIeRDmDCsCPOrrg0zFf52",
       "id": 2
+    },
+    {
+      "email": "letientoan44@gmail.com",
+      "password": "$2a$10$lgyu0PH.eUiwZcFutwk93u1rzKQeewNN.D3sNX8njxbq5Dr5ITENy",
+      "id": 3
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "$2a$10$u5K7J4RXFe6W7Lmrq.Mp.OMlEGh.dstwwkZoOmvCltwXw/fXggJca",
+      "id": 4
+    },
+    {
+      "email": "tuananh@gmail.com",
+      "password": "$2a$10$jVMes92qnSQSGtY8B7q7i.rCaScvsAtbRuT0fVtEY0nmRGPvvnRg.",
+      "id": 5
     }
   ]
 }
