@@ -1,33 +1,42 @@
-import { ProductForm } from '@/interface/type'
-import axios from 'axios'
-import { useForm } from 'react-hook-form'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useEffect } from 'react'
+import { ProductForm } from '@/interface/type';
+import axios from 'axios';
+import { useNavigate, useParams, Link } from 'react-router-dom';
+import { Form, Input, Button, message, Layout, Card, Menu } from 'antd';
+import { ShoppingCartOutlined, UserOutlined, OrderedListOutlined, LoginOutlined, EditOutlined } from '@ant-design/icons';
+import { useEffect, useState } from 'react';
+
+const { Header, Sider, Content } = Layout;
 
 const Edit = () => {
-  const {register,handleSubmit,reset, formState:{errors}} = useForm<ProductForm>()
-  const params = useParams()
-  useEffect(()=>{
-    (async()=>{
-try {
-  const {data} = await axios.get(`http://localhost:4000/students/${params.id}`)
-  reset(data)
-} catch (error) {
-  console.log(error)
-}
-    })()
-  },[])
-  const navigate = useNavigate()
-  const onSubmit = async (product:ProductForm)=>
-  {
+  const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const params = useParams();
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await axios.get(`http://localhost:4000/students/${params.id}`);
+        form.setFieldsValue(data);
+        setImageUrl(data.image);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, [params.id, form]);
+
+  const onFinish = async (values: ProductForm) => {
     try {
-      const {data} = await axios.put(`http://localhost:4000/students/${params.id}`,product)
-      alert('Cập nhật sản phẩm thành công ')
-      navigate(`/students`)
+      const updatedProduct = { ...values, image: imageUrl };
+      await axios.put(`http://localhost:4000/students/${params.id}`, updatedProduct);
+      message.success('Cập nhật sản phẩm thành công!');
+      navigate('/students');
     } catch (error) {
-      console.log(error)
+      console.error(error);
+      message.error('Lỗi khi cập nhật sản phẩm!');
     }
-  }
+  };
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider theme="dark" collapsible>
@@ -59,8 +68,6 @@ try {
         <Content style={{ margin: '20px', display: 'flex', justifyContent: 'center' }}>
           <Card title="Cập nhật sản phẩm" bordered className="w-full max-w-lg shadow-lg">
             <Form form={form} layout="vertical" onFinish={onFinish}>
-
-            <Form form={form} layout="vertical" onFinish={onFinish}>
               <Form.Item label="Tên sản phẩm" name="name" rules={[{ required: true, message: 'Vui lòng nhập tên sản phẩm!' }]}>
                 <Input placeholder="Nhập tên sản phẩm" />
               </Form.Item>
@@ -77,7 +84,18 @@ try {
                 <Input placeholder="Nhập URL ảnh sản phẩm" onChange={(e) => setImageUrl(e.target.value)} />
                 {imageUrl && <img src={imageUrl} alt="Ảnh sản phẩm" style={{ marginTop: 10, maxWidth: '100%', height: '150px', objectFit: 'cover' }} />}
               </Form.Item>
-  )
-}
 
-export default Edit
+              <Form.Item>
+                <Button type="primary" htmlType="submit" block>
+                  Cập nhật sản phẩm
+                </Button>
+              </Form.Item>
+            </Form>
+          </Card>
+        </Content>
+      </Layout>
+    </Layout>
+  );
+};
+
+export default Edit;
