@@ -44,7 +44,7 @@ const Add = () => {
             <Link to="/admin/products">Sản phẩm</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<UserOutlined />}>
-            <Link to="./admin/customers">Khách hàng</Link>
+            <Link to="/customers">Khách hàng</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<BarChartOutlined />}>
             <Link to="./admin/reports">Thống kê</Link>

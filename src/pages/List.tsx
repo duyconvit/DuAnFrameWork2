@@ -75,7 +75,7 @@ const List = () => {
             {
               key: "3",
               icon: <BarChartOutlined />,
-              label: <Link to="/admin/reports" style={{ textDecoration: "none" }}>Khách Hàng</Link>
+              label: <Link to="/customers" style={{ textDecoration: "none" }}>Khách Hàng</Link>
             }
           ]}
         />

@@ -7,6 +7,7 @@ import Edit from "./pages/Edit";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Checkout from "./pages/shop/Checkout";
+import CustomerList from "./pages/KhachHang";
 
 
 
@@ -19,6 +20,7 @@ function App() {
     {path:'/students/:id', element:<Edit/>},
     {path:'/login', element:<Login/>},
     {path:'/register', element:<Register/>},
+    {path:'/customers',element:<CustomerList/>},
   ])
   return routes
 }
