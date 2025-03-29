@@ -50,6 +50,15 @@ try {
           </Menu.Item>
         </Menu>
       </Sider>
+
+      <Layout>
+        <Header style={{ background: '#fff', padding: 0, textAlign: 'center', fontSize: '18px' }}>
+          Cập nhật sản phẩm
+        </Header>
+
+        <Content style={{ margin: '20px', display: 'flex', justifyContent: 'center' }}>
+          <Card title="Cập nhật sản phẩm" bordered className="w-full max-w-lg shadow-lg">
+            <Form form={form} layout="vertical" onFinish={onFinish}>
   )
 }
 
