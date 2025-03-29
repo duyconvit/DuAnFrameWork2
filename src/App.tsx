@@ -6,10 +6,14 @@ import Add from "./pages/Add";
 import Edit from "./pages/Edit";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Checkout from "./pages/shop/Checkout";
+
+
 
 function App() {
   const routes = useRoutes([
     {path:'/', element:<Home/>},
+    {path:'/checkout', element:<Checkout/>},
     {path:'/students', element:<List/>},
     {path:'/students/add', element:<Add/>},
     {path:'/students/:id', element:<Edit/>},

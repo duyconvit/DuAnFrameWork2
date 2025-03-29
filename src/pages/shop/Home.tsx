@@ -1,9 +1,12 @@
-import { Layout, Menu, Input, Button, Card, Row, Col, Avatar, Badge, message, Carousel } from "antd";
-import { ShoppingCartOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { Layout, Input, Button, Card, Row, Col, message, Carousel } from 'antd';
+import { SearchOutlined, UserOutlined } from '@ant-design/icons';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import ShoppingCart from "./Shopingcart";
+import Footer from './Footer';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 const { Meta } = Card;
 
 interface Product {
@@ -11,54 +14,74 @@ interface Product {
   name: string;
   price: number;
   image: string;
-  description: string;
+  quantity: number;
 }
 
 const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [cartCount, setCartCount] = useState(0);
+  const [cart, setCart] = useState<Product[]>([]);
+  const navigate = useNavigate();
 
+  // Lấy dữ liệu sản phẩm từ API
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get("http://localhost:4000/students");
+        const { data } = await axios.get('http://localhost:4000/students');
         setProducts(data);
       } catch (error) {
         console.error(error);
-        message.error("Lỗi khi tải danh sách sản phẩm!");
+        message.error('Lỗi khi tải danh sách sản phẩm!');
       }
     })();
   }, []);
 
-  const addToCart = () => {
-    setCartCount(cartCount + 1);
-    message.success("Thêm vào giỏ hàng thành công!");
+  // Thêm sản phẩm vào giỏ hàng
+  const addToCart = (product: Product) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item.id === product.id);
+      let updatedCart;
+      if (existingItem) {
+        updatedCart = prevCart.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      } else {
+        updatedCart = [...prevCart, { ...product, quantity: 1 }];
+      }
+      localStorage.setItem('cart', JSON.stringify(updatedCart)); // Lưu vào localStorage
+      return updatedCart;
+    });
+    message.success('Thêm vào giỏ hàng thành công!');
+  };
+
+  // Mua ngay (thêm vào giỏ hàng và chuyển đến trang thanh toán)
+  const buyNow = (product: Product) => {
+    setCart([{ ...product, quantity: 1 }]); // Cập nhật giỏ hàng với sản phẩm duy nhất
+    localStorage.setItem('cart', JSON.stringify([{ ...product, quantity: 1 }]));
+    navigate('/checkout');
   };
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: '100vh' }}>
       {/* Header */}
-      <Header style={{ background: "#fff", padding: "0 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div style={{ fontSize: "24px", fontWeight: "bold", color: "#1890ff" }}>📱 PhoneStore</div>
-        <Input placeholder="Tìm kiếm sản phẩm..." prefix={<SearchOutlined />} style={{ width: "40%" }} />
-        <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-          <Badge count={cartCount} showZero>
-            <Avatar size="large" icon={<ShoppingCartOutlined />} style={{ background: "#f56a00", cursor: "pointer" }} />
-          </Badge>
-          <Button type="primary" icon={<UserOutlined />}>Đăng nhập</Button>
+      <Header style={{ background: '#fff', padding: '0 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#1890ff' }}>📱 PhoneStore</div>
+        <Input placeholder="Tìm kiếm sản phẩm..." prefix={<SearchOutlined />} style={{ width: '40%' }} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+          <ShoppingCart cart={cart} setCart={setCart} />
+          <Button type="primary" icon={<UserOutlined />}><Link to="/login">Đăng nhập</Link></Button>
         </div>
       </Header>
 
       {/* Banner quảng cáo */}
-      <Carousel autoplay style={{ marginBottom: "20px" }}>
+      <Carousel autoplay style={{ marginBottom: '20px' }}>
         <div>
-          <img src="https://img.pikbest.com/origin/10/01/53/35bpIkbEsTBzN.png!w700wp" alt="Banner 1" style={{ width: "100%", height: "400px", objectFit: "cover" }} />
+          <img src="https://img.pikbest.com/origin/10/01/53/35bpIkbEsTBzN.png!w700wp" alt="Banner 1" style={{ width: '100%', height: '400px', objectFit: 'cover' }} />
         </div>
       </Carousel>
 
       {/* Nội dung chính */}
-      <Content style={{ padding: "20px" }}>
-        <h2 style={{ textAlign: "center", fontSize: "24px", fontWeight: "bold" }}>🔥 Sản phẩm mới nhất</h2>
+      <Content style={{ padding: '20px' }}>
+        <h2 style={{ textAlign: 'center', fontSize: '24px', fontWeight: 'bold' }}>🔥 Sản phẩm mới nhất</h2>
         <Row gutter={[16, 16]} justify="center">
           {products.map((product) => (
             <Col key={product.id} xs={24} sm={12} md={8} lg={6}>
@@ -68,19 +91,15 @@ const Home = () => {
                   <img
                     alt={product.name}
                     src={product.image}
-                    style={{
-                      width: "100%", // Đảm bảo ảnh vừa khung
-                      height: "200px", // Cố định chiều cao
-                      objectFit: "contain", // Giữ đúng tỉ lệ ảnh, không bị méo
-                      padding: "10px" // Thêm padding tránh ảnh dính sát mép
-                    }}
+                    style={{ width: '100%', height: '200px', objectFit: 'contain', padding: '10px' }}
                   />
                 }
                 actions={[
-                  <Button type="primary" onClick={addToCart}>Mua ngay</Button>
+                  <Button type="default" onClick={() => addToCart(product)}>🛒 Thêm vào giỏ</Button>,
+                  <Button type="primary" onClick={() => buyNow(product)}>⚡ Mua ngay</Button>
                 ]}
               >
-                <Meta title={product.name} description={`${product.price.toLocaleString()} VNĐ`} />
+                <Meta title={product.name} description={`${product.price.toLocaleString("vi-VN")} VNĐ`} />
               </Card>
             </Col>
           ))}
@@ -88,9 +107,7 @@ const Home = () => {
       </Content>
 
       {/* Footer */}
-      <Footer style={{ textAlign: "center", background: "#f0f2f5", padding: "20px" }}>
-        📞 PhoneStore - Cửa hàng điện thoại uy tín | Hotline: 1900 1234
-      </Footer>
+      <Footer />
     </Layout>
   );
 };
