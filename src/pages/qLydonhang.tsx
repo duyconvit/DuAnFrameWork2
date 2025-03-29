@@ -83,7 +83,7 @@ const OrderManagement = () => {
     <Layout style={{ minHeight: "100vh" }}>
       {/* Sidebar */}
       <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
-        <div className="logo" style={{ color: "white", textAlign: "center", padding: "20px" }}>Quản lý</div>
+        <div className="logo" style={{ color: "white", textAlign: "center", padding: "20px" }}>Admin</div>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["2"]}>
           <Menu.Item key="1" icon={<ShoppingCartOutlined />}>
             <Link to="/students">Sản phẩm</Link>
@@ -92,7 +92,7 @@ const OrderManagement = () => {
             <Link to="/orders">Đơn Hàng</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<OrderedListOutlined />}>
-            <Link to="/admin/reports">Khách Hàng</Link>
+            <Link to="/">Khách Hàng</Link>
           </Menu.Item>
           <Menu.Item key="4" icon={<LoginOutlined />}>
             <Link to="/login">Login</Link>

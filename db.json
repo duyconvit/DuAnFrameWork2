@@ -25,6 +25,11 @@
       "email": "admin99@gmail.com",
       "password": "$2a$10$5ELH4QTqVMneHVmBybels.WuYRCG9UT6Hr2XarUZI1XjFDE5igFC.",
       "id": 2
+    },
+    {
+      "email": "admin1@gmail.com",
+      "password": "$2a$10$JxlkSQpv9aH7wIcXGkRjNOgKz2kkZ16OXfw2qoCDiwTEYK7qG8sZ.",
+      "id": 3
     }
   ],
   "orders": [
