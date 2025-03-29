@@ -59,6 +59,24 @@ try {
         <Content style={{ margin: '20px', display: 'flex', justifyContent: 'center' }}>
           <Card title="Cập nhật sản phẩm" bordered className="w-full max-w-lg shadow-lg">
             <Form form={form} layout="vertical" onFinish={onFinish}>
+
+            <Form form={form} layout="vertical" onFinish={onFinish}>
+              <Form.Item label="Tên sản phẩm" name="name" rules={[{ required: true, message: 'Vui lòng nhập tên sản phẩm!' }]}>
+                <Input placeholder="Nhập tên sản phẩm" />
+              </Form.Item>
+
+              <Form.Item label="Giá tiền" name="price" rules={[{ required: true, message: 'Vui lòng nhập giá!' }]}>
+                <Input type="number" placeholder="Nhập giá sản phẩm" />
+              </Form.Item>
+
+              <Form.Item label="Mô tả" name="description">
+                <Input.TextArea rows={3} placeholder="Nhập mô tả sản phẩm" />
+              </Form.Item>
+
+              <Form.Item label="URL Ảnh sản phẩm">
+                <Input placeholder="Nhập URL ảnh sản phẩm" onChange={(e) => setImageUrl(e.target.value)} />
+                {imageUrl && <img src={imageUrl} alt="Ảnh sản phẩm" style={{ marginTop: 10, maxWidth: '100%', height: '150px', objectFit: 'cover' }} />}
+              </Form.Item>
   )
 }
 
