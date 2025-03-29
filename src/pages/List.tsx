@@ -70,7 +70,7 @@ const List = () => {
             {
               key: "2",
               icon: <UserOutlined />,
-              label: <Link to="/admin/customers" style={{ textDecoration: "none" }}>Đơn Hàng</Link>
+              label: <Link to="/orders" style={{ textDecoration: "none" }}>Đơn Hàng</Link>
             },
             {
               key: "3",

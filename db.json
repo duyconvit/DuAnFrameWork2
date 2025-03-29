@@ -83,5 +83,35 @@
       "password": "$2a$10$jVMes92qnSQSGtY8B7q7i.rCaScvsAtbRuT0fVtEY0nmRGPvvnRg.",
       "id": 5
     }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customerName": "Nguyễn Văn A",
+      "products": [
+        {
+          "name": "iPhone 14",
+          "price": 20000000
+        },
+        {
+          "name": "Samsung Galaxy S22",
+          "price": 18000000
+        }
+      ],
+      "total": 38000000,
+      "status": "Đã hủy"
+    },
+    {
+      "id": 2,
+      "customerName": "Trần Thị B",
+      "products": [
+        {
+          "name": "Xiaomi Mi 12",
+          "price": 15000000
+        }
+      ],
+      "total": 15000000,
+      "status": "Đã giao"
+    }
   ]
 }

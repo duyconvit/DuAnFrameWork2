@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Checkout from "./pages/shop/Checkout";
 import CustomerList from "./pages/KhachHang";
+import OrderManagement from "./pages/DonHang";
 
 
 
@@ -21,6 +22,7 @@ function App() {
     {path:'/login', element:<Login/>},
     {path:'/register', element:<Register/>},
     {path:'/customers',element:<CustomerList/>},
+    { path: '/orders', element: <OrderManagement /> }
   ])
   return routes
 }
