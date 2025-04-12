@@ -1,0 +1,353 @@
+{
+  "students": [
+    {
+      "name": "Iphone 16 Promax",
+      "price": "550000",
+      "description": "iphone16",
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-16-pro-max.png",
+      "id": 1
+    },
+    {
+      "name": "Samsung galaxy",
+      "price": "350000",
+      "description": "tyty",
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-samsung-galaxy-s25-ultra_3__3.png",
+      "id": 2
+    },
+    {
+      "name": "Oppo reno",
+      "price": "400000",
+      "description": "tyty",
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi_14t_pro_1_.png",
+      "id": 3
+    },
+    {
+      "name": "Iphone 15",
+      "price": "750000",
+      "description": "tyty",
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-plus_1__1.png",
+      "id": 4
+    },
+    {
+      "name": "Iphone 13 Pro",
+      "price": "300000",
+      "description": "tyty",
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-plus_1__1.png",
+      "id": 5
+    },
+    {
+      "name": "Ipad Air",
+      "price": "444000",
+      "description": "abx",
+      "image": "https://cdn2.cellphones.com.vn/x/media/catalog/product/i/p/ipad-air-6-m2-11-inch-5g_1.jpg",
+      "id": 6
+    },
+    {
+      "name": "Macbook",
+      "price": "999000",
+      "description": "xyzz",
+      "image": "https://cdn2.cellphones.com.vn/x/media/catalog/product/t/e/text_ng_n_1__6_135.png",
+      "id": 7
+    }
+  ],
+  "users": [
+    {
+      "email": "letientoan449@gmail.com",
+      "password": "$2a$10$L0l77bBXW0n4RtuZqjlnw.5lUja/cmIus/.VCPwlq16AHjuUUueAe",
+      "id": 1
+    },
+    {
+      "email": "daing@gmail.com",
+      "password": "$2a$10$V8VN0JMsVgBMjugQoeUuKeLZ8n9cdjz2bIeRDmDCsCPOrrg0zFf52",
+      "id": 2
+    },
+    {
+      "email": "letientoan44@gmail.com",
+      "password": "$2a$10$lgyu0PH.eUiwZcFutwk93u1rzKQeewNN.D3sNX8njxbq5Dr5ITENy",
+      "id": 3
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "$2a$10$u5K7J4RXFe6W7Lmrq.Mp.OMlEGh.dstwwkZoOmvCltwXw/fXggJca",
+      "id": 4
+    },
+    {
+      "email": "tuananh@gmail.com",
+      "password": "$2a$10$jVMes92qnSQSGtY8B7q7i.rCaScvsAtbRuT0fVtEY0nmRGPvvnRg.",
+      "id": 5
+    },
+    {
+      "email": "admin100@gmail.com",
+      "password": "$2a$10$jYWQZr67yzYevRT5aa9hAe1vALO5m8dKnnSPBEE9bMbhVSdw1dnLC",
+      "id": 6
+    },
+    {
+      "email": "admin99@gmail.com",
+      "password": "$2a$10$YbZGnsDwW/P2JZJJ6xNp6OM2czxw2GQ60Sr4A7C5Q0Rbu3yPhT.ey",
+      "id": 7
+    },
+    {
+      "email": "admin101@gmail.com",
+      "password": "$2a$10$UtWambS7Oaz579kXlG6.fu27DiM/6uV9.L3ZhVLxr7F9k8nkjF36G",
+      "id": 8
+    },
+    {
+      "email": "admin1@gmail.com",
+      "password": "$2a$10$/pLfGLnO5kmB8J5D6Y7PgOEBrNLKLhUfGBDdBAAiQ6YfoikXTDFA6",
+      "id": 9
+    }
+  ],
+  "orders": [
+    {
+      "customerName": "nguyễn duy hahha",
+      "phone": "0355340056",
+      "address": "7 cầu diễn hà nội",
+      "products": [
+        {
+          "name": "Iphone 16 Promax",
+          "price": "350000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi_14t_pro_1_.png",
+          "id": 3,
+          "quantity": 1
+        }
+      ],
+      "total": 350000,
+      "status": "Đã hủy",
+      "id": 3
+    },
+    {
+      "customerName": "nguyễn văn duy",
+      "phone": "0355340056",
+      "address": "7 cầu diễn hà nội",
+      "products": [
+        {
+          "name": "Samsung galaxy",
+          "price": "350000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-samsung-galaxy-s25-ultra_3__3.png",
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "total": 350000,
+      "status": "Đã hủy",
+      "id": 4
+    },
+    {
+      "customerName": "nguyễn thị duy",
+      "phone": "0355340056",
+      "address": "7 cầu diễn hà nội",
+      "products": [
+        {
+          "name": "Oppo reno",
+          "price": "400000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi_14t_pro_1_.png",
+          "id": 3,
+          "quantity": 2
+        }
+      ],
+      "total": 800000,
+      "status": "Đang xử lý",
+      "id": 5
+    },
+    {
+      "customerName": "nguyễn duy van",
+      "phone": "0355340056",
+      "address": " hà nội",
+      "products": [
+        {
+          "name": "Iphone 15",
+          "price": "750000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-plus_1__1.png",
+          "id": 4,
+          "quantity": 3
+        }
+      ],
+      "total": 2250000,
+      "status": "Đang xử lý",
+      "id": 6
+    },
+    {
+      "customerName": "Pham duy",
+      "phone": "0355340056",
+      "address": "7 cầu diễn ",
+      "products": [
+        {
+          "name": "Iphone 13 Pro",
+          "price": "300000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-plus_1__1.png",
+          "id": 5,
+          "quantity": 13
+        }
+      ],
+      "total": 3900000,
+      "status": "Đang xử lý",
+      "id": 7
+    },
+    {
+      "customerName": "duyhihi",
+      "phone": "0355340056",
+      "address": "7 cầu diễn hà nội",
+      "products": [
+        {
+          "name": "Macbook",
+          "price": "999000",
+          "description": "xyzz",
+          "image": "https://cdn2.cellphones.com.vn/x/media/catalog/product/t/e/text_ng_n_1__6_135.png",
+          "id": 7,
+          "quantity": 1
+        }
+      ],
+      "total": 999000,
+      "status": "Đã giao",
+      "id": 8
+    },
+    {
+      "customerName": "duyconvit",
+      "phone": "0123456789",
+      "address": "Thai binh",
+      "products": [
+        {
+          "name": "Iphone 13 Pro",
+          "price": "300000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-plus_1__1.png",
+          "id": 5,
+          "quantity": 1
+        }
+      ],
+      "total": 300000,
+      "status": "Đang xử lý",
+      "id": 9
+    },
+    {
+      "customerName": "nguyen van a",
+      "phone": "0378399219",
+      "address": "7 cầu diễn hà nội",
+      "products": [
+        {
+          "name": "Macbook",
+          "price": "999000",
+          "description": "xyzz",
+          "image": "https://cdn2.cellphones.com.vn/x/media/catalog/product/t/e/text_ng_n_1__6_135.png",
+          "id": 7,
+          "quantity": 1
+        }
+      ],
+      "total": 999000,
+      "status": "Đang xử lý",
+      "id": 10
+    },
+    {
+      "customerName": "duy tap code",
+      "phone": "035999999",
+      "address": "7 cầu diễn hà nội",
+      "products": [
+        {
+          "name": "Ipad Air",
+          "price": "444000",
+          "description": "abx",
+          "image": "https://cdn2.cellphones.com.vn/x/media/catalog/product/i/p/ipad-air-6-m2-11-inch-5g_1.jpg",
+          "id": 6,
+          "quantity": 1
+        }
+      ],
+      "total": 444000,
+      "status": "Đang xử lý",
+      "id": 11
+    }
+  ],
+  "customers": [
+    {
+      "name": "Lê Tiến Toàn",
+      "phone": "0967725410",
+      "address": "11\nSơn trung quốc oai",
+      "cart": [
+        {
+          "name": "Iphone 16 Promax",
+          "price": "350000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-samsung-galaxy-s25-ultra_3__3.png",
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "total": 350000,
+      "id": 1
+    },
+    {
+      "name": "Lê Tiến Toàn",
+      "phone": "0967725410",
+      "address": "11\nSơn trung quốc oai",
+      "cart": [
+        {
+          "name": "Iphone 16 Promax",
+          "price": "350000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-samsung-galaxy-s25-ultra_3__3.png",
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "total": 350000,
+      "id": 2
+    },
+    {
+      "name": "nguyễn duy",
+      "phone": "0355340056",
+      "address": "7 cầu diễn hà nội",
+      "cart": [
+        {
+          "name": "Iphone 16 Promax",
+          "price": "350000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi_14t_pro_1_.png",
+          "id": 3,
+          "quantity": 1
+        }
+      ],
+      "total": 350000,
+      "id": 3
+    },
+    {
+      "name": "Pham van duy",
+      "email": "admin99@gmail.com",
+      "phone": "0355340056",
+      "id": 4
+    },
+    {
+      "name": "duyhihi",
+      "phone": "0355340056",
+      "address": "7 cầu diễn hà nội",
+      "id": 5
+    },
+    {
+      "name": "duy sieu dep trai",
+      "email": "duynvph49893@gmail.com",
+      "phone": "0355340056",
+      "id": 6
+    },
+    {
+      "name": "duyconvit",
+      "phone": "0123456789",
+      "address": "Thai binh",
+      "id": 7
+    },
+    {
+      "name": "nguyen van a",
+      "phone": "0378399219",
+      "address": "7 cầu diễn hà nội",
+      "id": 8
+    },
+    {
+      "name": "duy tap code",
+      "phone": "035999999",
+      "address": "7 cầu diễn hà nội",
+      "id": 9
+    }
+  ]
+}
