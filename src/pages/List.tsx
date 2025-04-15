@@ -85,7 +85,7 @@ const List = () => {
             </Link>
           </div>
 
-          <Table columns={columns} dataSource={students} rowKey="id" bordered pagination={{ pageSize: 5 }} />
+          <Table columns={columns} dataSource={students} rowKey="id" bordered pagination={{ pageSize: 20 }} />
         </Content>
       </Layout>
     </Layout>

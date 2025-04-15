@@ -1,55 +1,66 @@
-import { UseRegister } from '@/interface/type'
-import axios from 'axios'
-import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { Button, Form, Input, Typography, message } from "antd";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import bcrypt from "bcryptjs";
+
+const { Title } = Typography;
 
 const Register = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<UseRegister>()
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const onSubmit = async (user: UseRegister) => {
+  const onFinish = async (values: any) => {
     try {
-      const { data } = await axios.post(`http://localhost:4000/register`, user)
-      alert('Đăng ký thành công!')
-      navigate(`/login`)
-    } catch (error: any) {
-      alert(error?.response?.data || "Có lỗi xảy ra!")
+      // Kiểm tra email đã tồn tại chưa
+      const check = await axios.get(`http://localhost:4000/users?email=${values.email}`);
+      if (check.data.length > 0) {
+        return message.error("Email đã tồn tại!");
+      }
+
+      // Hash mật khẩu với salt rounds = 10
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(values.password, salt);
+
+      const newUser = {
+        name: values.name,
+        email: values.email,
+        password: hashedPassword,
+        
+      };
+
+      // Lưu người dùng mới vào database
+      await axios.post("http://localhost:4000/users", newUser);
+      message.success("Đăng ký thành công!");
+      navigate("/login");
+    } catch (error) {
+      console.error("Lỗi khi đăng ký:", error);
+      message.error("Đã có lỗi khi đăng ký");
     }
-  }
+  };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md space-y-4">
-        <h2 className="text-2xl font-bold text-center text-gray-700">Đăng ký</h2>
+    <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow">
+      <Title level={2}>Đăng ký</Title>
+      <Form layout="vertical" onFinish={onFinish}>
+        <Form.Item label="Tên" name="name" rules={[{ required: true, message: "Vui lòng nhập tên" }]}>
+          <Input />
+        </Form.Item>
 
-        {/* Email Input */}
-        <input 
-          {...register("email", { required: true, pattern: /^\S+@\S+\.\S+$/ })}
-          type='text'
-          placeholder='Email'
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        {errors.email && <span className="text-red-500">Email không hợp lệ!</span>}
+        <Form.Item label="Email" name="email" rules={[{ required: true, message: "Vui lòng nhập email" }, { type: "email", message: "Email không hợp lệ" }]}>
+          <Input />
+        </Form.Item>
 
-        {/* Password Input */}
-        <input 
-          {...register("password", { required: true, minLength: 6 })}
-          type='password' // Sửa từ 'text' thành 'password'
-          placeholder='Password'
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        {errors.password && <span className="text-red-500">Mật khẩu phải có ít nhất 6 ký tự</span>}
+        <Form.Item label="Mật khẩu" name="password" rules={[{ required: true, message: "Vui lòng nhập mật khẩu" }]}>
+          <Input.Password />
+        </Form.Item>
 
-        {/* Submit Button */}
-        <button 
-          type="submit" 
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
-        >
-          Đăng ký
-        </button>
-      </form>
+        <Form.Item>
+          <Button type="primary" htmlType="submit" block>
+            Đăng ký
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

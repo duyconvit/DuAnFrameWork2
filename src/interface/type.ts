@@ -5,6 +5,7 @@ export interface IProduct
     image:string,
     price:number,
     description:string,
+    quantity?: number,
 }
 export type ProductForm = Omit<IProduct,"id">
 export interface IUser

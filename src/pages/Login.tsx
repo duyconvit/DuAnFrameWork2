@@ -1,113 +1,72 @@
-import { useEffect } from "react";
-import { useForm, Controller } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom";
-import { Card, Input, Button, Typography, Form, message } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { Button, Form, Input, Typography, message } from "antd";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import bcrypt from "bcryptjs";
 
-const { Title, Text } = Typography;
-
-interface LoginFormInputs {
-  email: string;
-  password: string;
-}
+const { Title } = Typography;
 
 const Login = () => {
-  const { control, handleSubmit, formState: { errors } } = useForm<LoginFormInputs>();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      message.info(`Chào mừng trở lại, ${JSON.parse(user).name}!`);
-      navigate("/");
-    }
-  }, [navigate]);
-
-  const onSubmit = async (user: LoginFormInputs) => {
+  const onFinish = async (values: any) => {
     try {
-      const { data } = await axios.post("http://localhost:4000/login", user);
-
-      if (data.accessToken) {
+      // Tìm người dùng theo email
+      const res = await axios.get(`http://localhost:4000/users?email=${values.email}`);
+      
+      if (res.data.length === 1) {
+        const user = res.data[0];
+  
+        // So sánh mật khẩu người dùng nhập với hash trong db
+        const isMatch = await bcrypt.compare(values.password, user.password);
+  
+        if (!isMatch) {
+          message.error("Sai mật khẩu");
+          return;
+        }
+  
+        // Lưu thông tin người dùng vào localStorage
         localStorage.setItem("user", JSON.stringify({
-          name: data.name,
-          email: data.email,
-          token: data.accessToken
+          name: user.name,
+          email: user.email,
+          
         }));
-        message.success(`Đăng nhập thành công! Chào mừng, ${data.name}!`);
+  
+        message.success("Đăng nhập thành công!");
         navigate("/");
       } else {
-        throw new Error("Lỗi xác thực");
+        message.error("Email không tồn tại");
       }
     } catch (error) {
-      message.error("Sai tài khoản hoặc mật khẩu. Vui lòng thử lại.");
+      console.error("Lỗi khi đăng nhập:", error);
+      message.error("Lỗi khi đăng nhập");
     }
   };
 
   return (
-    <div style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      minHeight: "100vh",
-      background: "linear-gradient(135deg, #e0f7fa, #80deea)"
-    }}>
-      <Card style={{ width: 400, boxShadow: "0 4px 20px rgba(0,0,0,0.1)", borderRadius: 12 }}>
-        <Title level={2} style={{ textAlign: "center", color: "#1890ff" }}>🔐 Đăng nhập</Title>
-        <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
-          <Form.Item
-            label="Email"
-            validateStatus={errors.email ? "error" : ""}
-            help={errors.email?.message}
-          >
-            <Controller
-              name="email"
-              control={control}
-              rules={{
-                required: "Vui lòng nhập email",
-                pattern: {
-                  value: /^\S+@\S+\.\S+$/,
-                  message: "Email không hợp lệ"
-                }
-              }}
-              render={({ field }) => (
-                <Input {...field} placeholder="Email" prefix={<UserOutlined />} />
-              )}
-            />
-          </Form.Item>
+    <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow">
+      <Title level={2}>Đăng nhập</Title>
+      <Form layout="vertical" onFinish={onFinish}>
+        <Form.Item label="Email" name="email" rules={[{ required: true, message: "Vui lòng nhập email" }, { type: "email", message: "Email không hợp lệ" }]}>
+          <Input />
+        </Form.Item>
 
-          <Form.Item
-            label="Mật khẩu"
-            validateStatus={errors.password ? "error" : ""}
-            help={errors.password?.message}
-          >
-            <Controller
-              name="password"
-              control={control}
-              rules={{
-                required: "Vui lòng nhập mật khẩu",
-                minLength: {
-                  value: 6,
-                  message: "Mật khẩu ít nhất 6 ký tự"
-                }
-              }}
-              render={({ field }) => (
-                <Input.Password {...field} placeholder="Mật khẩu" prefix={<LockOutlined />} />
-              )}
-            />
-          </Form.Item>
+        <Form.Item label="Mật khẩu" name="password" rules={[{ required: true, message: "Vui lòng nhập mật khẩu" }]}>
+          <Input.Password />
+        </Form.Item>
 
-          <Form.Item>
-            <Button type="primary" htmlType="submit" block>
-              Đăng nhập
-            </Button>
-          </Form.Item>
-        </Form>
+        <Form.Item>
+          <Button type="primary" htmlType="submit" block>
+            Đăng nhập
+          </Button>
+        </Form.Item>
 
-        <Text type="secondary">
-          Chưa có tài khoản? <Link to="/register">Đăng ký ngay</Link>
-        </Text>
-      </Card>
+        {/* Nút Đăng ký chuyển hướng đến trang đăng ký */}
+        <Form.Item>
+          <Button type="default" block onClick={() => navigate("/register")}>
+            Đăng ký
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
   );
 };

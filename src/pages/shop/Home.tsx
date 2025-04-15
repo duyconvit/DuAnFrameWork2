@@ -5,21 +5,18 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import ShoppingCart from "./Shopingcart";
 import Footer from './Footer';
+import { IProduct } from '@/interface/type';
 
 const { Header, Content } = Layout;
 const { Meta } = Card;
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  quantity: number;
+interface HomeProps {
+  cart: IProduct[];
+  setCart: (cart: IProduct[]) => void;
 }
 
-const Home = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [cart, setCart] = useState<Product[]>([]);
+const Home = ({ cart, setCart }: HomeProps) => {
+  const [products, setProducts] = useState<IProduct[]>([]);
   const [userName, setUserName] = useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -39,42 +36,44 @@ const Home = () => {
   // Kiểm tra xem người dùng đã đăng nhập hay chưa
   useEffect(() => {
     const user = localStorage.getItem('user');
-    if (!user) {
+    if (user) {
+      const userData = JSON.parse(user);
+      setUserName(userData.name);
+    } else {
       message.warning("Bạn cần đăng nhập để truy cập trang này");
       navigate("/login");
     }
-  }, []);
-
+  }, [navigate]);
 
   // Đăng xuất
   const handleLogout = () => {
-    localStorage.removeItem('user'); // Xóa dữ liệu đăng nhập
+    localStorage.removeItem('user');
     setUserName(null);
     message.success('Bạn đã đăng xuất');
+    navigate('/login');
   };
 
   // Thêm sản phẩm vào giỏ hàng
-  const addToCart = (product: Product) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === product.id);
-      let updatedCart;
-      if (existingItem) {
-        updatedCart = prevCart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      } else {
-        updatedCart = [...prevCart, { ...product, quantity: 1 }];
-      }
-      localStorage.setItem('cart', JSON.stringify(updatedCart)); // Lưu vào localStorage
-      return updatedCart;
-    });
+  const addToCart = (product: IProduct) => {
+    const existingItem = cart.find((item) => item.id === product.id);
+    let updatedCart;
+    if (existingItem) {
+      updatedCart = cart.map((item) =>
+        item.id === product.id ? { ...item, quantity: (item.quantity || 0) + 1 } : item
+      );
+    } else {
+      updatedCart = [...cart, { ...product, quantity: 1 }];
+    }
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
     message.success('Thêm vào giỏ hàng thành công!');
   };
 
   // Mua ngay (thêm vào giỏ hàng và chuyển đến trang thanh toán)
-  const buyNow = (product: Product) => {
-    setCart([{ ...product, quantity: 1 }]); // Cập nhật giỏ hàng với sản phẩm duy nhất
-    localStorage.setItem('cart', JSON.stringify([{ ...product, quantity: 1 }]));
+  const buyNow = (product: IProduct) => {
+    const updatedCart = [{ ...product, quantity: 1 }];
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
     navigate('/checkout');
   };
 

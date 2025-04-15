@@ -3,29 +3,29 @@ import { Layout, Card, List, Input, Button, message, Form } from "antd";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Footer from "./Footer";
+import { IProduct } from "@/interface/type";
 
 const { Header, Content } = Layout;
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  quantity: number;
+interface CheckoutProps {
+  cart: IProduct[];
+  setCart: (cart: IProduct[]) => void;
 }
 
-const Checkout = () => {
-  const [cart, setCart] = useState<Product[]>([]);
+const Checkout = ({ cart, setCart }: CheckoutProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
+    // Kiểm tra đăng nhập
+    const user = localStorage.getItem("user");
+    if (!user) {
+      message.warning("Bạn cần đăng nhập để thanh toán");
+      navigate("/login");
+      return;
     }
-  }, []);
+  }, [navigate]);
 
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = cart.reduce((sum, item) => sum + item.price * (item.quantity || 0), 0);
 
   const handleCheckout = async (values: any) => {
     try {
@@ -77,8 +77,8 @@ const Checkout = () => {
               <List.Item>
                 <img src={item.image} alt={item.name} style={{ width: 50, marginRight: 10 }} />
                 <div style={{ flex: 1 }}>
-                  <h4>{item.name} (x{item.quantity})</h4>
-                  <p>{(item.price * item.quantity).toLocaleString()} VNĐ</p>
+                  <h4>{item.name} (x{item.quantity || 0})</h4>
+                  <p>{(item.price * (item.quantity || 0)).toLocaleString()} VNĐ</p>
                 </div>
               </List.Item>
             )}

@@ -52,49 +52,11 @@
   ],
   "users": [
     {
-      "email": "letientoan449@gmail.com",
-      "password": "$2a$10$L0l77bBXW0n4RtuZqjlnw.5lUja/cmIus/.VCPwlq16AHjuUUueAe",
-      "id": 1
-    },
-    {
-      "email": "daing@gmail.com",
-      "password": "$2a$10$V8VN0JMsVgBMjugQoeUuKeLZ8n9cdjz2bIeRDmDCsCPOrrg0zFf52",
-      "id": 2
-    },
-    {
-      "email": "letientoan44@gmail.com",
-      "password": "$2a$10$lgyu0PH.eUiwZcFutwk93u1rzKQeewNN.D3sNX8njxbq5Dr5ITENy",
-      "id": 3
-    },
-    {
-      "email": "abc@gmail.com",
-      "password": "$2a$10$u5K7J4RXFe6W7Lmrq.Mp.OMlEGh.dstwwkZoOmvCltwXw/fXggJca",
-      "id": 4
-    },
-    {
-      "email": "tuananh@gmail.com",
-      "password": "$2a$10$jVMes92qnSQSGtY8B7q7i.rCaScvsAtbRuT0fVtEY0nmRGPvvnRg.",
-      "id": 5
-    },
-    {
-      "email": "admin100@gmail.com",
-      "password": "$2a$10$jYWQZr67yzYevRT5aa9hAe1vALO5m8dKnnSPBEE9bMbhVSdw1dnLC",
-      "id": 6
-    },
-    {
       "email": "admin99@gmail.com",
-      "password": "$2a$10$YbZGnsDwW/P2JZJJ6xNp6OM2czxw2GQ60Sr4A7C5Q0Rbu3yPhT.ey",
-      "id": 7
-    },
-    {
-      "email": "admin101@gmail.com",
-      "password": "$2a$10$UtWambS7Oaz579kXlG6.fu27DiM/6uV9.L3ZhVLxr7F9k8nkjF36G",
-      "id": 8
-    },
-    {
-      "email": "admin1@gmail.com",
-      "password": "$2a$10$/pLfGLnO5kmB8J5D6Y7PgOEBrNLKLhUfGBDdBAAiQ6YfoikXTDFA6",
-      "id": 9
+      "password": "$2a$10$MTiOHEetC8qlbQNX9iAqVuguKMzqJkiL//qYyjf8OBpZMQyRMDI/u",
+      "name": "Hublot",
+      "role": "user",
+      "id": 1
     }
   ],
   "orders": [
@@ -259,6 +221,114 @@
       "total": 444000,
       "status": "Đang xử lý",
       "id": 11
+    },
+    {
+      "customerName": "nguyen",
+      "phone": "0355340056",
+      "address": "7 cầu diễn ",
+      "products": [
+        {
+          "name": "Oppo reno",
+          "price": "400000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi_14t_pro_1_.png",
+          "id": 3,
+          "quantity": 1
+        }
+      ],
+      "total": 400000,
+      "status": "Đang xử lý",
+      "id": 12
+    },
+    {
+      "customerName": "abc",
+      "phone": "0355340056",
+      "address": "7 cầu diễn hà nội",
+      "products": [
+        {
+          "name": "Samsung galaxy",
+          "price": "350000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-samsung-galaxy-s25-ultra_3__3.png",
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "total": 350000,
+      "status": "Đang xử lý",
+      "id": 13
+    },
+    {
+      "customerName": "nguyễn duy abvc",
+      "phone": "0355340056",
+      "address": "7 cầu diễn hà nội",
+      "products": [
+        {
+          "name": "Oppo reno",
+          "price": "400000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi_14t_pro_1_.png",
+          "id": 3,
+          "quantity": 1
+        }
+      ],
+      "total": 400000,
+      "status": "Đang xử lý",
+      "id": 14
+    },
+    {
+      "customerName": "nguyễn duy",
+      "phone": "999999999999999",
+      "address": "7 cầu diễn hà nội",
+      "products": [
+        {
+          "name": "Oppo reno",
+          "price": "400000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi_14t_pro_1_.png",
+          "id": 3,
+          "quantity": 6
+        }
+      ],
+      "total": 2400000,
+      "status": "Đang xử lý",
+      "id": 15
+    },
+    {
+      "customerName": "tien toan",
+      "phone": "0183635464",
+      "address": "abcvdd",
+      "products": [
+        {
+          "name": "Oppo reno",
+          "price": "400000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi_14t_pro_1_.png",
+          "id": 3,
+          "quantity": 1
+        }
+      ],
+      "total": 400000,
+      "status": "Đang xử lý",
+      "id": 16
+    },
+    {
+      "customerName": "nguyễn van toan",
+      "phone": "03553400563333",
+      "address": "7 cầu diễn hà nội",
+      "products": [
+        {
+          "name": "Oppo reno",
+          "price": "400000",
+          "description": "tyty",
+          "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi_14t_pro_1_.png",
+          "id": 3,
+          "quantity": 4
+        }
+      ],
+      "total": 1600000,
+      "status": "Đã hủy",
+      "id": 17
     }
   ],
   "customers": [
@@ -348,6 +418,43 @@
       "phone": "035999999",
       "address": "7 cầu diễn hà nội",
       "id": 9
+    },
+    {
+      "name": "nguyen",
+      "phone": "0355340056",
+      "address": "7 cầu diễn ",
+      "id": 10
+    },
+    {
+      "name": "abc",
+      "phone": "0355340056",
+      "address": "7 cầu diễn hà nội",
+      "id": 11
+    },
+    {
+      "name": "nguyễn duy abvc",
+      "phone": "0355340056",
+      "address": "7 cầu diễn hà nội",
+      "id": 12
+    },
+    {
+      "name": "nguyễn duy",
+      "phone": "999999999999999",
+      "address": "7 cầu diễn hà nội",
+      "id": 13
+    },
+    {
+      "name": "tien toan",
+      "phone": "0183635464",
+      "address": "abcvdd",
+      "id": 14
+    },
+    {
+      "name": "nguyễn van toan",
+      "phone": "03553400563333",
+      "address": "7 cầu diễn hà nội",
+      "id": 15
     }
-  ]
+  ],
+  "cart": []
 }
